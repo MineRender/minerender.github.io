@@ -7,22 +7,24 @@
     <div class="skin-container" ref="skinContainer"/>
 </template>
 <script lang="ts" setup>
-import { AssetKey, AssetLoader, Models, Renderer, Skins } from "minerender";
+import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep } from "minerender";
 import { Maybe } from "minerender/src/util/util";
 import { Model } from "minerender/src/model/Model";
 import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref, watch } from "vue";
 
 const props = defineProps<{
     skin: string,
-    rotate: boolean
+    rotate: boolean,
+    grid?: boolean
 }>();
 
 const skinContainer = ref<HTMLDivElement>();
 
 let renderer: Renderer;
-onBeforeMount(() => {
-    console.log("onBeforeMount")
+const recreate = async ()=>{
+    await sleep(100 * Math.random());
+
     renderer = new Renderer({
         camera: {
             near: 1,
@@ -38,14 +40,12 @@ onBeforeMount(() => {
             enabled: false
         },
         debug: {
-            grid: false,
-            axes: false
+            grid: props.grid,
+            axes: props.grid
         }
     });
-})
 
-onMounted(async () => {
-    console.log("onMounted");
+    skinContainer.value?.children[0]?.remove();
     renderer.appendTo(skinContainer.value!);
 
     const controls = new OrbitControls(renderer.camera, renderer.renderer.domElement);
@@ -63,7 +63,6 @@ onMounted(async () => {
         renderer.dirty = true;
     }, 100);
 
-
     const skin = await Skins.fromUuidOrUsername(props.skin);
     console.log(skin);
     const skinObject = await renderer.scene.addSkin(skin);
@@ -75,6 +74,14 @@ onMounted(async () => {
             skinObject.setRotation(r);
         }
     }, 100);
+}
+
+onMounted(async () => {
+    console.log("onMounted");
+    recreate();
+    watch(()=>props.grid,()=>{
+        recreate();
+    })
 })
 
 </script>

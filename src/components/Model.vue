@@ -7,22 +7,25 @@
     <div class="model-container" ref="modelContainer"/>
 </template>
 <script lang="ts" setup>
-import { AssetKey, AssetLoader, Models, Renderer, Skins, toRadians } from "minerender";
+import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep, toRadians } from "minerender";
 import { Maybe } from "minerender/src/util/util";
 import { Model } from "minerender/src/model/Model";
 import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref, watch } from "vue";
 
 const props = defineProps<{
     model: string,
-    rotate: boolean
+    rotate: boolean,
+    grid?: boolean
 }>();
 
 const modelContainer = ref<HTMLDivElement>();
 
 let renderer: Renderer;
-onBeforeMount(() => {
-    console.log("onBeforeMount")
+const recreate = async () => {
+    await sleep(100 * Math.random());
+
+    console.log("onMounted");
     renderer = new Renderer({
         camera: {
             near: 1,
@@ -38,14 +41,12 @@ onBeforeMount(() => {
             enabled: false
         },
         debug: {
-            grid: true,
-            axes: true
+            grid: props.grid,
+            axes: props.grid
         }
     });
-})
 
-onMounted(async () => {
-    console.log("onMounted");
+    modelContainer.value?.children[0]?.remove();
     renderer.appendTo(modelContainer.value!);
 
     const controls = new OrbitControls(renderer.camera, renderer.renderer.domElement);
@@ -62,7 +63,7 @@ onMounted(async () => {
 
     const model = await Models.getMerged(AssetKey.parse("models", props.model));
     const modelObject = await renderer.scene.addModel(model, {
-        wireframe: true,
+        wireframe: props.grid,
         mergeMeshes: true,
         instanceMeshes: true
     });
@@ -76,6 +77,14 @@ onMounted(async () => {
     //         modelObject.setRotation(r);
     //     }
     // }, 500);
-})
+};
+
+onMounted(() => {
+    recreate();
+    watch(() => props.grid, () => {
+        console.log("hi")
+        recreate();
+    })
+});
 
 </script>
