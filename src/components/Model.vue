@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .model-container {
     height: 400px;
 }
@@ -8,10 +8,8 @@
 </template>
 <script lang="ts" setup>
 import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep, toRadians } from "minerender";
-import { Maybe } from "minerender/src/util/util";
-import { Model } from "minerender/src/model/Model";
 import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onBeforeMount, onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const props = defineProps<{
     model: string,
@@ -62,12 +60,14 @@ const recreate = async () => {
     }, 100);
 
     const model = await Models.getMerged(AssetKey.parse("models", props.model));
-    const modelObject = await renderer.scene.addModel(model, {
-        wireframe: props.grid,
-        mergeMeshes: true,
-        instanceMeshes: true
-    });
-    console.log(modelObject.options);
+    if (model) {
+        const modelObject = await renderer.scene.addModel(model, {
+            wireframe: props.grid,
+            mergeMeshes: true,
+            instanceMeshes: true
+        });
+        console.log(modelObject.options);
+    }
 
     // setInterval(() => {
     //     if (props.rotate) {

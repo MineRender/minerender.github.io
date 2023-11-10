@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .skin-container {
     height: 400px;
 }
@@ -8,10 +8,8 @@
 </template>
 <script lang="ts" setup>
 import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep } from "minerender";
-import { Maybe } from "minerender/src/util/util";
-import { Model } from "minerender/src/model/Model";
 import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onBeforeMount, onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const props = defineProps<{
     skin: string,
@@ -22,7 +20,7 @@ const props = defineProps<{
 const skinContainer = ref<HTMLDivElement>();
 
 let renderer: Renderer;
-const recreate = async ()=>{
+const recreate = async () => {
     await sleep(100 * Math.random());
 
     renderer = new Renderer({
@@ -64,22 +62,24 @@ const recreate = async ()=>{
     }, 100);
 
     const skin = await Skins.fromUuidOrUsername(props.skin);
-    console.log(skin);
-    const skinObject = await renderer.scene.addSkin(skin);
+    if (skin) {
+        console.log(skin);
+        const skinObject = await renderer.scene.addSkin(skin);
 
-    setInterval(() => {
-        if (props.rotate) {
-            let r = skinObject.getRotation();
-            r.y += 0.06;
-            skinObject.setRotation(r);
-        }
-    }, 100);
+        setInterval(() => {
+            if (props.rotate) {
+                let r = skinObject.getRotation();
+                r.y += 0.06;
+                skinObject.setRotation(r);
+            }
+        }, 100);
+    }
 }
 
 onMounted(async () => {
     console.log("onMounted");
     recreate();
-    watch(()=>props.grid,()=>{
+    watch(() => props.grid, () => {
         recreate();
     })
 })
