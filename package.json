@@ -15,7 +15,7 @@
     "vue": "^3.2.0",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",
-    "minerender": "../MineRender2"
+    "minerender": "link:../MineRender2"
   },
   "devDependencies": {
     "@babel/types": "^7.21.4",
