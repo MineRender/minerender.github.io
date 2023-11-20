@@ -7,9 +7,9 @@
     <div class="model-container" ref="modelContainer"/>
 </template>
 <script lang="ts" setup>
-import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep, toRadians } from "minerender";
-import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onMounted, ref, watch } from "vue";
+import {AssetKey, AssetLoader, Models, Renderer, Skins, sleep, toRadians, toDegrees} from "minerender";
+import {OrbitControls} from "minerender/src/three/OrbitControls";
+import {onMounted, ref, watch} from "vue";
 
 const props = defineProps<{
     model: string,
@@ -67,16 +67,16 @@ const recreate = async () => {
             instanceMeshes: true
         });
         console.log(modelObject.options);
+
+        setInterval(() => {
+            if (props.rotate) {
+                let r = modelObject.getRotation();
+                r.y = (r.y + 0.1) % (Math.PI / 2);
+                modelObject.setRotation(r);
+            }
+        }, 100);
     }
 
-    // setInterval(() => {
-    //     if (props.rotate) {
-    //         let r = modelObject.getRotation();
-    //         console.log(r)
-    //         r.y += 0.1;
-    //         modelObject.setRotation(r);
-    //     }
-    // }, 500);
 };
 
 onMounted(() => {

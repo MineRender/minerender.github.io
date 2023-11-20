@@ -42,16 +42,16 @@
 
     <v-divider class="my-4"/>
 
-    <v-container>
-        <v-row>
-            <v-col v-for="n in randomEntities" :key="n" cols="4">
-                <v-card>
-                    <Entity :entity="n" :rotate="rotate" :grid="grid"/>
-                    <v-card-subtitle>{{ n }}</v-card-subtitle>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
+<!--    <v-container>-->
+<!--        <v-row>-->
+<!--            <v-col v-for="n in randomEntities" :key="n" cols="4">-->
+<!--                <v-card>-->
+<!--                    <Entity :entity="n" :rotate="rotate" :grid="grid"/>-->
+<!--                    <v-card-subtitle>{{ n }}</v-card-subtitle>-->
+<!--                </v-card>-->
+<!--            </v-col>-->
+<!--        </v-row>-->
+<!--    </v-container>-->
 
     <v-container>
         <v-switch v-model="rotate" label="Rotate"></v-switch>
