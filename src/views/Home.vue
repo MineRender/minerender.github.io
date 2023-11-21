@@ -25,6 +25,7 @@
                 </v-card>
             </v-col>
         </v-row>
+        <DemoLinks name="demo-block"/>
     </v-container>
 
     <v-divider class="my-4"/>
@@ -67,6 +68,7 @@ import Hero from "@/components/Hero.vue";
 import { ref } from "vue";
 import Model from "@/components/Model.vue";
 import Entity from "@/components/Entity.vue";
+import DemoLinks from "@/components/DemoLinks.vue";
 
 const randomSkins = ['inventivetalent', 'Plancke', '08bed5'];
 const randomBlocks = ['stone', 'dirt', 'oak_stairs'];
