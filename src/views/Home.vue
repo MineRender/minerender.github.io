@@ -12,6 +12,7 @@
                 </v-card>
             </v-col>
         </v-row>
+        <DemoLinks name="demo-skin"/>
     </v-container>
 
     <v-divider class="my-4"/>
