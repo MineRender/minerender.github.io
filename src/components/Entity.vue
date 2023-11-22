@@ -60,7 +60,7 @@ const recreate = async () => {
     }, 100);
 
     const entity = await Entities.getEntity(AssetKey.parse("entities", props.entity));
-    const entityObject = await renderer.scene.addEntity(entity);
+    const entityObject = await renderer.scene.addEntity(entity!);
 
     // setInterval(() => {
     //     if (props.rotate) {

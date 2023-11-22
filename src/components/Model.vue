@@ -66,7 +66,6 @@ const recreate = async () => {
             mergeMeshes: true,
             instanceMeshes: true
         });
-        console.log(modelObject.options);
 
         setInterval(() => {
             if (props.rotate) {
