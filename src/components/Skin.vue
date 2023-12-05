@@ -7,9 +7,9 @@
     <div class="skin-container" ref="skinContainer"/>
 </template>
 <script lang="ts" setup>
-import { AssetKey, AssetLoader, Models, Renderer, Skins, sleep } from "minerender";
-import { OrbitControls } from "minerender/src/three/OrbitControls";
-import { onMounted, ref, watch } from "vue";
+import {AssetKey, AssetLoader, Models, Renderer, Skins, sleep} from "minerender";
+import {OrbitControls} from "minerender/src/three/OrbitControls";
+import {onMounted, ref, watch} from "vue";
 
 const props = defineProps<{
     skin: string,
@@ -78,7 +78,9 @@ const recreate = async () => {
 
 onMounted(async () => {
     console.log("onMounted");
-    recreate();
+    setTimeout(() => {
+        recreate();
+    }, 100 * Math.random());
     watch(() => props.grid, () => {
         recreate();
     })

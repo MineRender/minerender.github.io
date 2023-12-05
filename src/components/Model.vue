@@ -79,7 +79,9 @@ const recreate = async () => {
 };
 
 onMounted(() => {
-    recreate();
+    setTimeout(() => {
+        recreate();
+    }, 100 * Math.random());
     watch(() => props.grid, () => {
         console.log("hi")
         recreate();
