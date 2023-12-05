@@ -982,7 +982,7 @@ cross-spawn@^7.0.2:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-crypto-browserify@^3.11.0, crypto-browserify@^3.12.0:
+crypto-browserify@^3.11.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/crypto-browserify/-/crypto-browserify-3.12.0.tgz#396cf9f3137f03e4b8e532c58f698254e00f80ec"
   integrity sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==
@@ -1037,11 +1037,6 @@ deep-is@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
   integrity sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
-
-deepmerge@^4.0.0:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
-  integrity sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==
 
 define-data-property@^1.0.1, define-data-property@^1.1.1:
   version "1.1.1"
@@ -1877,10 +1872,10 @@ mimic-response@^2.0.0:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-2.1.0.tgz#d13763d35f613d09ec37ebb30bac0469c0ee8f43"
   integrity sha512-wXqjST+SLt7R009ySCglWBCFpjUygmCIfD790/kVbiGmUgfYGuB14PiTd5DwVxSV4NcYHjzMkoj5LjQZwTQLEA==
 
-minerender@alpha:
-  version "2.0.0-alpha.14"
-  resolved "https://registry.yarnpkg.com/minerender/-/minerender-2.0.0-alpha.14.tgz#6d3c46a503d1163ef65baa485c630bc7356da9ed"
-  integrity sha512-ZOg/g9rH3IWof6Ccx8hsXYVRKCWWoDr6JhZBDkig2CcS0LzVb5JWNrFFfmdPTJrDs6SCJeOAUvMoAAmiMsUs8w==
+minerender@^2.0.0-alpha.15:
+  version "2.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/minerender/-/minerender-2.0.0-alpha.15.tgz#9cc256e448c6e1905a0d7d2069c777124d0f2639"
+  integrity sha512-QnYZy17poLNHloWVPHLrTCIZbyN4GN5RRkVW4eGcwMk3q+2queAS83/CKo09RkAAWfWvVh80kJfUjWIahR/ofw==
   dependencies:
     "@inventivetalent/loading-cache" "^0.4.3"
     "@inventivetalent/time" "^1.0.0"
@@ -1891,10 +1886,7 @@ minerender@alpha:
     buffer "^6.0.3"
     canvas "^2.6.1"
     colors "^1.4.0"
-    crypto-browserify "^3.12.0"
     crypto-js "^4.0.0"
-    deepmerge "^4.0.0"
-    https-browserify "^1.0.0"
     image-size "^0.9.4"
     jobqu "^2.0.5"
     localforage "^1.9.0"
@@ -1902,16 +1894,14 @@ minerender@alpha:
     onscreen "^1.3.2"
     pako "^2.0.3"
     postprocessing "^6.33.3"
-    prismarine-nbt "^1.5.0"
+    prismarine-nbt "^2.2.1"
     process "^0.11.10"
     stats.js "^0.17.0"
-    stream-browserify "^3.0.0"
     stream-http "^3.1.1"
     supports-color "^7.2.0"
     three "^0.158.0"
     threejs-examples "^60.0.0"
-    ts-deepmerge "^1.0.6"
-    tty-browserify "^0.0.1"
+    ts-deepmerge "2.0.2"
     typescript-memoize "^1.1.1"
     url "^0.11.0"
     util "^0.12.3"
@@ -2291,10 +2281,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prismarine-nbt@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/prismarine-nbt/-/prismarine-nbt-1.6.0.tgz#fc5d0300d4b3123a1371caa87d540136309a33f5"
-  integrity sha512-h0ECvIjjwjMOtsmHxHc8hNY7kzktnKqKXmOHF0AkmH7OjkcHNAFsWRiZNvfc76rOhNonRutHvTVAlh/eLtK0oA==
+prismarine-nbt@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prismarine-nbt/-/prismarine-nbt-2.2.1.tgz#a263e08b36fd27a682024549a8823d82f9ad30d9"
+  integrity sha512-Mb50c58CPnuZ+qvM31DBa08tf9UumlTq1LkvpMoUpKfCuN05GZHTqCUwER3lxTSHLL0GZKghIPbYR/JQkINijQ==
   dependencies:
     protodef "^1.9.0"
 
@@ -2686,10 +2676,10 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-ts-deepmerge@^1.0.6:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ts-deepmerge/-/ts-deepmerge-1.1.0.tgz#4236ae102199affe2e77690dcf198a420160eef2"
-  integrity sha512-VvwaV/6RyYMwT9d8dClmfHIsG2PCdm6WY430QKOIbPRR50Y/1Q2ilp4i2XEZeHFcNqfaYnAQzpyUC6XA0AqqBg==
+ts-deepmerge@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/ts-deepmerge/-/ts-deepmerge-2.0.2.tgz#ba640d1c3f387d90fdced823cfccee2c9ade01dd"
+  integrity sha512-Bmx+Y4OGmk6h5Y8DhkGa19xIcG2SWQocJDxivTTij/t9hx/9chG3AMxU0XC/FpqmonhNcX67BpmfDWB8DOXZRg==
 
 ts-node@^9.1.1:
   version "9.1.1"
@@ -2715,7 +2705,7 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-tty-browserify@0.0.1, tty-browserify@^0.0.1:
+tty-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.1.tgz#3f05251ee17904dfd0677546670db9651682b811"
   integrity sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==
